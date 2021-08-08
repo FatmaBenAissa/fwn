@@ -5,7 +5,10 @@ const app=express();
 require("dotenv").config();
 
 const fileUpload=require('express-fileupload')
-app.use(fileUpload())
+app.use(fileUpload({
+    useTempFiles: true
+})) 
+
 //connect to db
 connectDB();
 // routes
@@ -17,6 +20,7 @@ app.use("/reservation",require("./routes/reservation"))
 app.use("/avis",require("./routes/avis"))
 app.use("/contact",require("./routes/contact"))
 app.use("/",require("./routes/upload"))
+
 
 //connect to server
 PORT=process.env.PORT;

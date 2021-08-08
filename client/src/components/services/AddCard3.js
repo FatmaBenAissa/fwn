@@ -1,12 +1,12 @@
+
 import React from 'react'
 import {useEffect,useState} from 'react'
 
 import { useSelector,useDispatch } from 'react-redux'
-import { postCard} from '../../js/actions/card'
+import { getCards, postCard} from '../../js/actions/card'
 import {Link} from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from "axios"
 
 function AddCard() {
   const [show, setShow] = useState(false);
@@ -30,57 +30,8 @@ function AddCard() {
   }
   
   const user = useSelector(state => state.userReducer.user)
-  const [cardImg, setCardImg] = useState(false)
-  const [loading, setLoading] = useState(false)
-  
-  
 
-  const styleUpload = {
-      display: cardImg ? "block" : "none"
-  }
 
-  const handleUpload = async e =>{
-      e.preventDefault()
-      try {
-         
-          const file = e.target.files[0]
-          if(!file) return alert("File not exist.")
-          
-          if(file.size > 1024 * 1024) // 1mb
-              return alert("Size too large!")
-
-          if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-              return alert("File format is incorrect.")
-
-          let formData = new FormData()
-          formData.append('file', file)
-          setLoading(true)
-          const res = await axios.post('/upload', formData, {
-              headers: {'content-type': 'multipart/form-data'}
-          })
-
-          setLoading(false)
-          setCardImg(res.data)   
-                
-         }
-          
-
-       catch (err) {
-          alert(err.response.data.msg)
-      }
-  }
-
-  const handleDestroy = async () => {
-      try {
-        
-          setLoading(true)
-          await axios.post('/destroy', {public_id: cardImg.public_id})
-          setLoading(false)
-          setCardImg(false)
-      } catch (err) {
-          alert(err.response.data.msg)
-      }
-  }
 
   
 return (
@@ -111,7 +62,7 @@ return (
 
            </select> */}
          <table>
-         <tr><td style={{width:200, height:20, marginRight:20}}><label >Nom de la carte:</label></td><td><select name="titleCard"  value={card.titleCard} onChange={handlechange} >
+         <tr><td style={{width:200, height:20, marginRight:20}}><label >Nom de la carte:</label></td><td><select name="titleCard"  onChange={handlechange} value={card.titleCard} >
          <option selected>salles des fêtes</option>
            <option>photographes</option>
            <option>Habillement</option>
@@ -119,19 +70,11 @@ return (
            <option>gastronomie</option>
            <option>Troupes Musicales</option>
             <option>Cartes d'invitation</option>
-             <option>décoration</option>
+             <option>Organisateur Et Décorateur</option>
 
            </select></td></tr>
-        
-         <tr><td><label>image</label></td><td> <input type="file" name="file" id="file_up" onChange={handleUpload} />
-                <div id="file_img" style={styleUpload}>
-                        <img src={cardImg ? cardImg.url : ''} alt=""/>
-                        <button onClick={handleDestroy}>X</button>
-                    </div>
-                    {console.log(cardImg.url)}
-                      
-                     </td></tr>
-                     <tr><td><label>Nom de l'agent</label></td><td><input type="text" name="agentName" value={card.agentName} onChange={handlechange} ></input></td></tr>
+         <tr><td><label>Nom de l'agent</label></td><td><input type="text" name="agentName" value={card.agentName} onChange={handlechange}  ></input></td></tr>
+         <tr><td><label>Image</label></td><td><input type="text" name="cardImg" value={card.cardImg} onChange={handlechange} ></input></td></tr>
          <tr><td><label>Detailles</label></td><td><input type="text" name="details" value={card.details} onChange={handlechange} ></input></td></tr>
          <tr><td><label>Catégorie</label></td><td><input type="text" name="category" value={card.category} onChange={handlechange} ></input></td></tr>
          <tr><td><label>Prix</label></td><td><input type="text" name="prix" value={card.prix} onChange={handlechange}  ></input></td></tr>
@@ -141,7 +84,7 @@ return (
          <Modal.Footer>
            
            <Link to="/marriages">
-           <Button style={{width:120,fontWeight:"bold", height:60,color:"white", backgroundColor:"pink", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=>{dispatch(postCard({...card,cardImg:cardImg.url}));handleClose()}}>
+           <Button style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(postCard(card));dispatch(getCards());handleClose()}}>
              
           Add
            </Button>
