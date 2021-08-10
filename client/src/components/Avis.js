@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { getAviss,postAvis,deleteAvis } from "../js/actions/avis";
 import Footer from "./Footer"
+import {Link} from "react-router-dom"
 function Avis() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.userReducer.user)
@@ -138,8 +139,9 @@ function Avis() {
              
             </div>
 
-            {/* Post comment */}
+            {/* Post comment */} 
             <div className="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4" style={{backgroundColor:"rgb(182, 80, 80)", border:"none"}}>
+        
               <form className="form2" id="algin-form" style={{backgroundColor:"rgb(182, 80, 80)", border:"none"}}>
                 <div className="form-group">
                   <h4 className="h11">Laissez votre avis</h4>{" "}
@@ -192,12 +194,19 @@ function Avis() {
                 </div>
             
                 <div className="form2-group">
-                  {" "}
-                  <button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" onClick={()=>{dispatch(postAvis({visitName,visitAvis,visitEmail,visitImg,visitDate})); dispatch(getAviss())}}>
+               
+               {user? 
+               <button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" onClick={()=>{dispatch(postAvis({visitName,visitAvis,visitEmail,visitImg,visitDate})); dispatch(getAviss())}}>
               
                     Ajouter avis
-                  </button>{" "}
+                  </button>:
+                  <Link to="/signIn"><button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" >
+              
+              Ajouter avis
+            </button></Link>}
                 </div>
+                <div>
+                <h5>vous devez vous connecter avant d'ajouter votre avis</h5></div>
               </form>
             </div>
           </div>

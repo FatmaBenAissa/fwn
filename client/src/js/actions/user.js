@@ -76,7 +76,8 @@ export const deleteOneUser=(id)=>async(dispatch)=>{
 
 //editUser
 export const editUser=(id,user)=> (dispatch)=>{
-  try{axios.put(`/user/${id}`,user)}
+  try{axios.put(`/user/${id}`,user)
+dispatch(current())}
  
  
   catch(err) {console.log(err)}

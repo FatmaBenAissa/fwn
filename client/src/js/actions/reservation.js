@@ -42,6 +42,7 @@ export const postReservation=(reservation)=>async(dispatch)=>{
         const res=await axios.post("/reservation",reservation)
   
         dispatch({type:POST_RESERVATION,payload:res.data})
+        dispatch(getReservations())
         console.log(res.data)
         
     } catch (error) {
@@ -52,8 +53,10 @@ export const postReservation=(reservation)=>async(dispatch)=>{
     }
 }
 //Edit reservation
-export const editReservation=(id,reservation)=> (dispatch)=>{
-    axios.put(`/reservation/${id}`,reservation)
-    .then((res)=>dispatch(getReservations()))
-    .catch((err)=>console.log(err))
+export const editReservation=(id,reservation)=>async (dispatch)=>{
+    try{const res= await  axios.put(`/reservation/${id}`,reservation)
+    dispatch(getReservations())}
+   
+   
+    catch(err) {console.log(err)}
 } 

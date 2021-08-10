@@ -79,9 +79,7 @@ function SignIn() {
                   className="check"
                   defaultChecked
                 />{" "}
-                <label htmlFor="check">
-                  <span className="icon" /> Keep me Signed in
-                </label>{" "}
+            
               </div>
               <div className="group">
                 {" "}

@@ -1,30 +1,29 @@
-import React , {useState} from 'react'
+import React , {useState, useEffect} from 'react'
 import './userProfile.css'
 import {useSelector,useDispatch} from 'react-redux'
 import {editUser} from "../../js/actions/user"
 import Footer from '../Footer'
+import EditProfile from "./EditProfile"
+
+import ReactLoading from "react-loading";
 
 
 function UserProfile() {
 const user = useSelector(state => state.userReducer.user)
 const dispatch = useDispatch()
-const [name, setName] = useState(user.name)
-const [lastName, setLastName] = useState(user.lastName)
-const [email, setEmail] = useState(user.email)
-const [password, setPassword] = useState(user.password)
-const [imageUrl,setImageUrl]= useState(user.imageUrl)
-const [isAdmin, setIsAdmin] = useState(user.isAdmin)
-const [phone,setPhone]=useState(user.phone)
-    return (
+
+
+    return (  
        <div style={{marginTop:150} }>
-            <div className="row" style={{width:1148,marginLeft:48}} >
+     
+            <div className="row" style={{width:1148,marginLeft:48}} > 
               <div className="col-md-12">
                 <ol className="breadcrumb">
                   <h6  style={{fontWeight:'bolder', fontSize:24}}>Informations personnelles</h6>
                 </ol>
               </div>
             </div>
-             <div className="container" style={{marginTop:110}} >
+            {user? <div className="container" style={{marginTop:110}} >
                  
           <div className="main-body" style={{margin:20}}>
     
@@ -38,9 +37,10 @@ const [phone,setPhone]=useState(user.phone)
                       <div className="mt-3">
                         <h4>{user.name} {user.lastName}</h4>
                         <p className="text-secondary mb-1">Full Stack Developer</p>
-                        <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                        <button className="btn btn-primary">Follow</button>
-                        <button className="btn btn-outline-primary">Message</button>
+                        <p className="text-muted font-size-sm"></p>
+                      
+                        {/* <button className="btn btn-primary">Changer votre photo</button> */}
+                       
                       </div>
                     </div>
                   </div>
@@ -56,7 +56,7 @@ const [phone,setPhone]=useState(user.phone)
                         <h6 className="mb-0" style={{color:"blue"}}>Prénom</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" type="name" name="name" value={name} onChange={(e)=>setName(e.target.value)}/>
+                      <input type="text" class="form-control" type="name" name="name" value={user.name} />
                       </div>
                     </div>
                     <hr />
@@ -65,7 +65,7 @@ const [phone,setPhone]=useState(user.phone)
                         <h6 className="mb-0" style={{color:"blue"}}>Nom</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" value={lastName} onChange={(e)=>setLastName(e.target.value)}/>
+                      <input type="text" class="form-control" value={user.lastName} />
                       </div>
                     </div>
                     <hr />
@@ -74,7 +74,7 @@ const [phone,setPhone]=useState(user.phone)
                         <h6 className="mb-0" style={{color:"blue"}}>Email</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                      <input type="text" class="form-control" value={user.email}  />
                       </div>
                     </div>
                     <hr />
@@ -83,7 +83,7 @@ const [phone,setPhone]=useState(user.phone)
                         <h6 className="mb-0" style={{color:"blue"}}>Téléphone</h6>
                       </div>
                       <div className="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" value={phone} onChange={(e)=>setPhone(e.target.value)}/>
+                      <input type="text" class="form-control" value={user.phone} />
                       </div>
                     </div>
                     <hr />
@@ -98,8 +98,8 @@ const [phone,setPhone]=useState(user.phone)
                     <hr /> */}
                     <div className="row">
                       <div className="col-sm-12">
-<button variant="primary" onClick={()=> {dispatch(editUser(user._id,{name,lastName,email,password,imageUrl,isAdmin,phone})); alert("Votre profile est modifié")}}> Enregistrer </button>
-                        {/* <EditProfile userR={user}/> */}
+{/* <button variant="primary" onClick={()=> {dispatch(editUser(user._id,{name,lastName,email,password,imageUrl,isAdmin,phone})); alert("Votre profile est modifié")}}> Enregistrer </button> */}
+                       <EditProfile user={user}/> 
                       </div>
                     </div>
                   </div>
@@ -107,7 +107,7 @@ const [phone,setPhone]=useState(user.phone)
               </div>
             </div>
           </div>
-        </div>
+        </div>:<h2 style={{marginTop:150,marginLeft:600}}>  <ReactLoading type={"spokes"} color={"blue"} height={50} width={50} /> </h2> }
 
 
         {/*Reservation List */}
@@ -123,5 +123,3 @@ export default UserProfile
 
 
   
-       
-

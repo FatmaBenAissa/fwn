@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     overflow: "visible",
     boxShadow: "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)",
     minWidth:300,
-    maxHeight:421,
+    maxHeight:434,
     marginTop:"20px",
     
   },
@@ -58,6 +58,9 @@ return (
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
         {card.details[0]}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+       Prix Unitaire: {card.prix} DT
         </Typography>
       </CardContent>
     </CardActionArea>

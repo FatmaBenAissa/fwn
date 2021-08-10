@@ -29,7 +29,7 @@ import FeteNaissance from "./components/services/FeteNaissance";
 import Conferences from "./components/services/Conferences";
 import Fiançailles from "./components/services/Fiançailles"
 import AvisHome from "./components/AvisHome";
-import Whoweare from "./components/Woweare"
+import About2 from "./components/About2"
 
 
 
@@ -75,7 +75,7 @@ function App() {
        <Route path="/Fêtes de naissance" component={FeteNaissance}/>
        <Route path="/Conférences" component={Conferences}/>
        <Route path="/avisHome" component={AvisHome}/>
-       <Route path="/whoweare" component={Whoweare}/>
+       <Route path="/about2" component={About2}/>
 
     
 

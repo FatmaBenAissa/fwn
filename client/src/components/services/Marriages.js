@@ -182,7 +182,7 @@ export default function Marriages() {
           {/* <button><img src="https://www.iconsdb.com/icons/preview/barbie-pink/plus-7-xxl.png" style={{width:40, height:40}}/></button> */}
           <div className="small">
             <TabPanel className="tabp" value={value} index={0}>
-              <div className="card-list">
+             <div className="card-list">
                 {cards
                   .filter((el) => el.titleCard == "salles des fêtes")
                   .map((el) => (

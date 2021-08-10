@@ -10,7 +10,9 @@ exports.registerRules=()=>
         min:6,
         max:20
      }
-    )
+    ),
+    
+    check("phone","check phone number").isMobilePhone()
 
 ];
 

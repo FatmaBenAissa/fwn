@@ -6,6 +6,8 @@ import {deleteReservation} from "../../../js/actions/reservation"
 import {Link} from "react-router-dom"
 import EditRes from "./EditRes"
 import Footer from "../../Footer"
+import swal from 'sweetalert'
+
 
 function Basket(props) {
  const dispatch = useDispatch()
@@ -65,21 +67,40 @@ const sum=(TabRes)=>{
                         </thead>  
       
                         <tbody>
-{reservations!==[] ?reservations.filter(el=>el.userName==user.name).map(el=>                        <tr>
+{reservations.filter(el=>el.userName==user.name)!==[] ?reservations.filter(el=>el.userName==user.name).map(el=>                        <tr>
                             <td style={{width:205, height:70,marginRight:20}}><img src={el.imgCard} className="img-cart"  /></td>
                             <td style={{width:379}}><strong>{el.titleCard}</strong><p>{el.dateRes}</p></td>
                             <td>
                               <form className="form-inline"  style={{width:51}}>
-                                <input className="form-control" style={{width:61, height:43,marginLeft:-4}} type="text" defaultValue={el.num} maxLength="6" />
+                                <span> {el.num}</span>
+                                {/* <input className="form-control" style={{width:61, height:43,marginLeft:-4}} type="text" defaultValue={el.num} maxLength="6" /> */}
                               </form>
                             </td>
                             <td style={{width:204}} >{el.total}Dt</td>
                             <td style={{display:"flex", width:197, height:69, marginLeft:10, border:"none"}}>
                             <EditRes res={el}/>
-                <button    style={{marginLeft:5}} bsPrefix="delete_btn" onClick={()=>dispatch(deleteReservation(el._id))}><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="faTrash" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button>
+                <button    style={{marginLeft:5}} bsPrefix="delete_btn" onClick={()=>
+                swal({
+                  title: "Vous êtes sûr?",
+                  text: "Une fois supprimé, vous ne pourrez pas la récupérer",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                })
+                .then((willDelete) => {
+                  if (willDelete) {
+                    dispatch(deleteReservation(el._id))
+                    swal("Poof! Votre réservation a été supprimée !", {
+                      icon: "success",
+                   
+                    });
+                  } else {
+                    swal("La suppression est annulée!");
+                  }
+                })}><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="faTrash" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg></button>
                 </td>
                      
-                          </tr>):<h1>pas de commande</h1>}
+                          </tr>):<tr><td>pas de commande</td></tr>}
                           
                       
           

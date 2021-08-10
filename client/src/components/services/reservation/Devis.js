@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import "./devis.css";
 import { getReservations } from "../../../js/actions/reservation";
 import { Link } from "react-router-dom";
-import Footer from "../../Footer"
+
+import swal from 'sweetalert'
+
 
 function Devis() {
   const dispatch = useDispatch();
@@ -94,7 +96,12 @@ function Devis() {
                     {/* <a href="#"><u>Add promo code</u></a> */}
                   </div>
                 </div>{" "}
-                <Link to="/"><button style={{backgroundColor:"rgb(222 113 113)",border:"none",color:"white"}} className="btnD" onClick={()=>alert("Votre réservation est bien confirmé")}>Confirmer</button></Link>
+                <Link to="/"><button style={{backgroundColor:"rgb(222 113 113)",border:"none",color:"white"}} className="btnD" onClick={()=>swal({
+  title: "Génial!",
+  text: "Votre réservation est validée!",
+  icon: "success",
+  button: "D'accord!",
+})}>Confirmer</button></Link>
               </div>
              
             </div>

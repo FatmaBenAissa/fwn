@@ -1,4 +1,3 @@
-
 import React from 'react'
 import {useEffect,useState} from 'react'
 
@@ -8,6 +7,7 @@ import {Link} from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {postCategory} from '../../js/actions/category'
+import axios from "axios"
 
 
 function AddCategory() {
@@ -16,6 +16,7 @@ function AddCategory() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const dispatch = useDispatch()
+  const user = useSelector(state => state.userReducer.user)
 
 
   const [category, setCategory] = useState({typeCategory:"",description:"",categoryImage:""})
@@ -25,13 +26,67 @@ function AddCategory() {
     setCard({titleCard:"",agentName:"",cardImg:"",details:[],category:[],prix:0})
   
   }, [card,cardReducer]) */
-  
   const handlechange=(e)=>{
-      e.preventDefault();
-      setCategory({...category,[e.target.name]:e.target.value})
-  }
+    e.preventDefault();
+    setCategory({...category,[e.target.name]:e.target.value})
+}
+
+
+const [categoryImage, setCategoryImage] = useState(false)
+const [loading, setLoading] = useState(false)
+
+
+
+const styleUpload = {
+    display: categoryImage ? "block" : "none"
+}
+
+const handleUpload = async e =>{
+    e.preventDefault()
+    try {
+       
+        const file = e.target.files[0]
+        if(!file) return alert("File not exist.")
+        
+        if(file.size > 1024 * 1024) // 1mb
+            return alert("Size too large!")
+
+        if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
+            return alert("File format is incorrect.")
+
+        let formData = new FormData()
+        formData.append('file', file)
+        setLoading(true)
+        const res = await axios.post('/upload', formData, {
+            headers: {'content-type': 'multipart/form-data'}
+        })
+
+        setLoading(false)
+        setCategoryImage(res.data)   
+              
+       }
+        
+
+     catch (err) {
+        alert(err.response.data.msg)
+    }
+}
+
+const handleDestroy = async () => {
+    try {
+      
+        setLoading(true)
+        await axios.post('/destroy', {public_id: categoryImage.public_id})
+        setLoading(false)
+        setCategoryImage(false)
+    } catch (err) {
+        alert(err.response.data.msg)
+    }
+}
+
   
-  const user = useSelector(state => state.userReducer.user)
+  
+  
 
 
 
@@ -67,7 +122,14 @@ return (
          <tr><td style={{width:200, height:20, marginRight:20}}><label >Type de l'évenement:</label></td><td><input type="text" name="typeCategory"  onChange={handlechange}  ></input></td></tr>
     
          <tr><td><label>Description:</label></td><td><input type="text" name="description" onChange={handlechange}  ></input></td></tr>
-         <tr><td><label>Image: </label></td><td><input type="text" name="categoryImage"  onChange={handlechange} ></input></td></tr>
+         <tr><td><label>image</label></td><td> <input type="file" name="file" id="file_up" onChange={handleUpload} />
+                <div id="file_img" style={styleUpload}>
+                        <img style={{width:300,height:300}} src={categoryImage ? categoryImage.url : ''} alt=""/>
+                        {/* <button onClick={handleDestroy}>X</button> */}
+                    </div>
+                    {console.log(categoryImage.url)}
+                      
+                     </td></tr>
         
          </table>
          
@@ -75,9 +137,9 @@ return (
          <Modal.Footer>
            
            <Link to="/services">
-           <Button style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(postCategory(category));handleClose()}}>
+           <Button style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=>{dispatch(postCategory({...category,categoryImage:categoryImage.url}));handleClose()}}>
              
-          Add
+          Ajouter
            </Button>
            </Link>
          </Modal.Footer>
