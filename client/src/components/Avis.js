@@ -5,7 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { getAviss,postAvis,deleteAvis } from "../js/actions/avis";
 import Footer from "./Footer"
 import {Link} from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Avis() {
+  const notify = () => toast.warn("Votre avis nous intéresse, Merci!");
   const dispatch = useDispatch();
   const user = useSelector(state => state.userReducer.user)
 
@@ -196,9 +199,18 @@ function Avis() {
                 <div className="form2-group">
                
                {user? 
-               <button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" onClick={()=>{dispatch(postAvis({visitName,visitAvis,visitEmail,visitImg,visitDate})); dispatch(getAviss())}}>
+               <button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" onClick={()=>{dispatch(postAvis({visitName,visitAvis,visitEmail,visitImg,visitDate})); dispatch(getAviss());notify()}}>
               
                     Ajouter avis
+                    <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover></ToastContainer>
                   </button>:
                   <Link to="/signIn"><button style={{backgroundColor:"#b7a2a2",border:"none", color:"white"}} type="button" id="post" className="btn" >
               

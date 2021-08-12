@@ -67,4 +67,3 @@ Bel Event est  est le premier guide de planification des évenements aujourd'hui
         }
         
         export default About
-

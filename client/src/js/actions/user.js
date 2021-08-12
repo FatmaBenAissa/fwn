@@ -9,6 +9,7 @@ export const registerUser=(user,history) => async (dispatch)=> {
     history.push("/");
   } catch (error) {
     const {errors, msg}= error.response.data;
+    console.log(error)
     if (Array.isArray(errors)){
       errors.forEach((err)=>alert(err.msg));
     // dispatch({type:FAIL_USER, payload:error.response.data});

@@ -38,7 +38,7 @@ const sum=(TabRes)=>{
             <div className="row" style={{width:1000,marginLeft:20}} >
               <div className="col-md-12">
                 <ol className="breadcrumb">
-                  <h6  style={{fontWeight:'bolder', fontSize:24}}>Panier</h6>
+                  <h6  style={{fontWeight:'bolder', fontSize:24}}>Réservations</h6>
                 </ol>
               </div>
             </div>
@@ -115,7 +115,7 @@ const sum=(TabRes)=>{
                       </table>
                       <span style={{display:"flex", marginLeft:683, marginBottom:20}}>
                      <Link to='/marriages' style={{width:120,fontWeight:"bold", height:49,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none", color:"white"}}>Poursuivre les achats<span className="glyphicon glyphicon-chevron-right" /></Link> 
-    <Link to="/devis" style={{width:120,fontWeight:"bold", height:49,marginLeft:11,backgroundColor:"rgb(222 113 113)",color:"white", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}}>Confirmer<span className="glyphicon glyphicon-chevron-right" /></Link>
+    <Link to="/devisFinal" style={{width:120,fontWeight:"bold", height:49,marginLeft:11,backgroundColor:"rgb(222 113 113)",color:"white", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}}>Confirmer<span className="glyphicon glyphicon-chevron-right" /></Link>
     </span>
                     </div>
                   </div>

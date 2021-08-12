@@ -52,7 +52,7 @@ function SignIn() {
                   id="user"
                   type="text"
                   className="input"
-                  placeholder="Enter your address mail"
+                  placeholder="Entrer votre adresse mail"
                   onChange={(e)=>setEmail(e.target.value)}
                   
                 />{" "}
@@ -67,7 +67,7 @@ function SignIn() {
                   type="password"
                   className="input"
                   data-type="password"
-                  placeholder="Enter your password"
+                  placeholder="Entrer votre mot de passe"
                   onChange={(e)=>setPassword(e.target.value)}
                 />{" "}
               </div>
@@ -101,19 +101,6 @@ function SignIn() {
               <div className="group">
                 {" "}
                 <label htmlFor="user" className="label">
-                  Nom: 
-                </label>{" "}
-                <input
-                  id="user"
-                  type="text"
-                  className="input"
-                  placeholder="Entrer votre nom"
-                  onChange={(e)=>setName(e.target.value)}
-                />{" "}
-              </div>
-              <div className="group">
-                {" "}
-                <label htmlFor="user" className="label">
                   Prénom
                 </label>{" "}
                 <input
@@ -122,6 +109,19 @@ function SignIn() {
                   className="input"
                   placeholder="Entrer votre prénom"
                   onChange={(e)=>setLastName(e.target.value)}
+                />{" "}
+              </div>
+              <div className="group">
+                {" "}
+                <label htmlFor="user" className="label">
+                  Nom: 
+                </label>{" "}
+                <input
+                  id="user"
+                  type="text"
+                  className="input"
+                  placeholder="Entrer votre nom"
+                  onChange={(e)=>setName(e.target.value)}
                 />{" "}
               </div>
               <div className="group">

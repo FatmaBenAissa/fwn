@@ -111,7 +111,7 @@ function AdminTabs() {
                   <th scope="col" width="20%" >Prestataire</th>
                   <th scope="col" width="20%">Date</th>
                   <th scope="col" width="20%">Status</th>
-                  <th scope="col" width="30%">Client</th>
+                  <th scope="col" width="30%">Client(e)</th>
                
                   <th scope="col" width="2%">Total</th>
                   <th scope="col" ></th>

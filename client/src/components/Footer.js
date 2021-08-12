@@ -1,5 +1,6 @@
 import React from 'react'
 import "./footer.css"
+import {Link} from "react-router-dom"
 function Footer() {
     return (
         
@@ -15,45 +16,45 @@ function Footer() {
           <div className="container bottom_border">
             <div className="row">
               <div className=" col-sm-4 col-md col-sm-4  col-12 col">
-                <h5 className="headin5_amrc col_white_amrc pt2">Find us</h5>
+                <h5 className="headin5_amrc col_white_amrc pt2">
+Nos contacts</h5>
                 {/*headin5_amrc*/}
-                <p className="mb10">5 rue du chÃ¢teau
-
-75001 Paris, France</p>
+                <p className="mb10">5 Beb Bhar
+6001 Gabés, Tunisie</p>
    
-                <p><i className="fa fa-phone" />  +91-9999878398</p>
+                <p><i className="fa fa-phone" />  +216 75 123 456</p>
                 <p><i className="fa fa fa-envelope" /> info@belevent.com</p>
               </div>
               <div className=" col-sm-4 col-md  col-6 col">
-                <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                <h5 className="headin5_amrc col_white_amrc pt2">Liens</h5>
                 {/*headin5_amrc*/}
                 <ul className="footer_ul_amrc">
-                  <li><a href="http://webenlance.com">Image Rectoucing</a></li>
-                  <li><a href="http://webenlance.com">Clipping Path</a></li>
-                  <li><a href="http://webenlance.com">Hollow Man Montage</a></li>
+                  <li><Link to="/">Accueil</Link></li>
+                  <li><Link to="/about">A propos</Link></li>
+                  <li><Link to="/services">Services</Link></li>
                  
                  
                 </ul>
                 {/*footer_ul_amrc ends here*/}
               </div>
               <div className=" col-sm-4 col-md  col-6 col">
-                <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                <h5 className="headin5_amrc col_white_amrc pt2">Liens</h5>
                 {/*headin5_amrc*/}
                 <ul className="footer_ul_amrc">
-                  <li><a href="http://webenlance.com">Remove Background</a></li>
-                  <li><a href="http://webenlance.com">Shadows &amp; Mirror Reflection</a></li>
-                  <li><a href="http://webenlance.com">Logo Design</a></li>
+                  <li> <Link to="/gallery">Gallerie</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                  <li><Link to="/avis">Avis</Link></li>
                 
                 
                 </ul>
                 {/*footer_ul_amrc ends here*/}
               </div>
               <div className=" col-sm-4 col-md  col-12 col">
-                <h5 className="headin5_amrc col_white_amrc pt2">Follow us</h5>
+                <h5 className="headin5_amrc col_white_amrc pt2">Suivez-nous</h5>
                 {/*headin5_amrc ends here*/}
                 <ul className="footer_ul2_amrc">
-                  <li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
-                  <li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+                  <li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Bel Event (Page Officielle)<a href="#">https://www.lipsum.com/</a></p></li>
+                  <li><a href="#"><i className="fab fa-twitter fleft padding-right" /> </a><p>Bel Event(Page officielle)<a href="#">https://www.lipsum.com/</a></p></li>
                 
                 </ul>
                 {/*footer_ul2_amrc ends here*/}
@@ -61,21 +62,14 @@ function Footer() {
             </div>
           </div>
           <div className="container">
-            <ul className="foote_bottom_ul_amrc">
-              <li><a href="http://webenlance.com">Accueil</a></li>
-              <li><a href="http://webenlance.com">A propos</a></li>
-              <li><a href="http://webenlance.com">Services</a></li>
-              <li><a href="http://webenlance.com">Galerie</a></li>
-              
-              <li><a href="http://webenlance.com">Contact</a></li>
-            </ul>
+           
             {/*foote_bottom_ul_amrc ends here*/}
-            <p className="text-center">Copyright @2017 | Designed With by <a href="#">Bel Event</a></p>
+            <p style={{marginTop:10}}className="text-center">Copyright @2017 | Designed With by <a href="#">Bel Event</a></p>
             <ul className="social_footer_ul">
-              <li><a href="http://webenlance.com"><i className="fab fa-facebook-f" /></a></li>
-              <li><a href="http://webenlance.com"><i className="fab fa-twitter" /></a></li>
-              <li><a href="http://webenlance.com"><i className="fab fa-linkedin" /></a></li>
-              <li><a href="http://webenlance.com"><i className="fab fa-instagram" /></a></li>
+              <li><a href="#"><i className="fab fa-facebook-f" /></a></li>
+              <li><a href="#"><i className="fab fa-twitter" /></a></li>
+              <li><a href="#"><i className="fab fa-linkedin" /></a></li>
+              <li><a href="#"><i className="fab fa-instagram" /></a></li>
             </ul>
             {/*social_footer_ul ends here*/}
           </div>
@@ -86,4 +80,3 @@ function Footer() {
 
 
 export default Footer
-

@@ -27,7 +27,7 @@ export const getAvis=(id)=>async(dispatch)=>{
 //Delete avis
 export const deleteAvis=(id)=>async(dispatch)=>{
    let result = await axios.delete(`/avis/${id}`)
-    .then((res)=>dispatch(getAvis()))
+    .then((res)=>dispatch(getAviss()))
     .catch((err)=>console.log(err))
 }
 
@@ -37,7 +37,7 @@ export const postAvis=(avis)=>async(dispatch)=>{
         const res=await axios.post("/avis",avis)
       
         dispatch({type:POST_AVIS,payload:res.data})
-        dispatch(getAvis())
+        dispatch(getAviss())
     } catch (error) {
         dispatch({type:POST_AVIS_FAIL,payload:error})
         console.log(error) 

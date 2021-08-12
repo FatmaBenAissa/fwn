@@ -29,7 +29,9 @@ import FeteNaissance from "./components/services/FeteNaissance";
 import Conferences from "./components/services/Conferences";
 import Fiançailles from "./components/services/Fiançailles"
 import AvisHome from "./components/AvisHome";
-import About2 from "./components/About2"
+
+import DevisFinal from "./components/services/reservation/DevisFinal"
+import About2 from "./components/About2";
 
 
 
@@ -45,8 +47,11 @@ function App() {
  }, []);
 
 
+
+
   return (
     <div className="App">
+ 
      <Navbar />
      {/* <  FileUpload/> */}
    
@@ -69,13 +74,15 @@ function App() {
        <Route  path="/avis" component={Avis} /> 
        {/* <Route  path="/carousel" component={Carousel} />  */}
        <Route  path="/userTab" component={UserTab} /> 
-       <Route path="/devis" component={Devis}/>
+       <Route path="/devisFinal" component={DevisFinal}/>
        <Route path="/Anniversaires" component={Anniversaires}/>
        <Route path="/Fiançailles" component={Fiançailles}/>
        <Route path="/Fêtes de naissance" component={FeteNaissance}/>
        <Route path="/Conférences" component={Conferences}/>
        <Route path="/avisHome" component={AvisHome}/>
        <Route path="/about2" component={About2}/>
+     
+ 
 
     
 

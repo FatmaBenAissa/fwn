@@ -1,15 +1,17 @@
 .bodyD {
-    min-height: 100vh;
+    min-height: 73vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(245, 245, 241);
+
     font-size: 0.8rem
 }
 
 .cardD {
-    max-width: 1000px;
-    margin: 2vh
+    min-width: 1273px;
+    margin: 2vh;
+ 
+    
 }
 
 .cardD-top {

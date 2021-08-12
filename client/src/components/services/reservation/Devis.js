@@ -29,13 +29,13 @@ function Devis() {
    return s
   }
   return (
-    <div className="bodyD" style={{ marginTop: 20 }}>
+    <div className="bodyD" >
       <div className="cardD">
         <div className="cardD-top border-bottom text-center"> </div>
         <div className="cardD-body">
           <div className="rowD" style={{ width: 471 }}>
             <div className="colD-md-5">
-              <div className="right border">
+              <div className="right border" style={{width:690, marginLeft:186}}>
                 <div className="headerD">Devis</div>
                 {reservations!==[] ?reservations.filter(el=>el.userName==user.name).map(el=>           
                 <div
@@ -55,7 +55,7 @@ function Devis() {
                   </div>
                   <div className="col-8">
                     <div className="rowD">
-                      <b>{el.total}</b>
+                      <b>{el.total} Dt</b>
                     </div>
                     <div className="rowD text-muted">
                       {el.titleCard}
@@ -65,32 +65,33 @@ function Devis() {
                 <hr />
                 <div
                   className="rowD lower"
-                  style={{ display: "flex", flexWrap: "no-wrap" }}
-                >
-                  <div>Subtotal</div>
-                  <div style={{ marginLeft: 261 }}>{sum(reservations.filter(el=>el.userName==user.name))}</div>
+                  style={{ display: "flex", flexWrap: "no-wrap" ,marginLeft:76 }}>
+                  <div>Total partiel</div>
+                  <div style={{ marginLeft: 287 }}>{sum(reservations.filter(el=>el.userName==user.name))} Dt</div>
                 </div>
+
                 <div
                   className="rowD lower"
-                  style={{ display: "flex", flexWrap: "no-wrap" }}
-                >
+                  style={{ display: "flex", flexWrap: "no-wrap" ,marginLeft:76}}>
                   <div>Honoraire</div>
-                  <div style={{ marginLeft: 278 }}>2%</div>
+                  <div style={{ marginLeft: 318 }}> 2 %</div>
                 </div>
+             
+                
                 <div
                   className="rowD lower"
-                  style={{ display: "flex", flexWrap: "no-wrap" }}
+                  style={{ display: "flex", flexWrap: "no-wrap" ,marginLeft:76}}
                 >
                   <div>
                     <b>Total</b>
                   </div>
-                  <div style={{ marginLeft: 279 }}>
-                    <b>{(sum(reservations.filter(el=>el.userName==user.name))*0.02)+sum(reservations.filter(el=>el.userName==user.name))}</b>
+                  <div style={{ marginLeft: 324}}>
+                    <b>{(sum(reservations.filter(el=>el.userName==user.name))*0.02)+sum(reservations.filter(el=>el.userName==user.name))} Dt</b>
                   </div>
                 </div>
                 <div
                   className="rowD lower"
-                  style={{ display: "flex", flexWrap: "no-wrap" }}
+                  style={{ display: "flex", flexWrap: "no-wrap",marginLeft: 76 }}
                 >
                   <div className="colD text-left">
                     {/* <a href="#"><u>Add promo code</u></a> */}

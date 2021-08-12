@@ -37,7 +37,7 @@ return (
        <Modal  show={show} onHide={handleClose}
           size="lg">
          <Modal.Header closeButton>
-         <Modal.Title>Editer la réservation</Modal.Title>
+         <Modal.Title>Modifier la réservation</Modal.Title>
          </Modal.Header>
          <Modal.Body >
          <table>
@@ -54,7 +54,7 @@ return (
            
            <Button style={{width:120,fontWeight:"bold", height:60,color:"white", backgroundColor:"rgb(222 113 113)", border:"none",padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(editReservation(res._id,{titleCard,dateRes,num,total,status}));dispatch(getReservations());handleClose()}}>
              
-          Edit
+          Modifier
            </Button>
         
          </Modal.Footer>

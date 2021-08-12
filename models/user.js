@@ -30,7 +30,9 @@ const UserSchema=new schema({
     },
     phone:{
         type:String,
-        
+        default: "12345678",
+    
+   
     }
 
 

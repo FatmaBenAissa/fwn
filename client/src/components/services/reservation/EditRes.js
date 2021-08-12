@@ -4,9 +4,11 @@ import {editReservation} from "../../../js/actions/reservation"
 import {Link} from "react-router-dom"
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditRes({res}) {
-
+  const notify = () => toast.warn("Votre réservation a été modifié!");
     
         
             const dispatch = useDispatch()
@@ -60,10 +62,19 @@ return (
          <Modal.Footer>
            
            <Link to="/basket">
-           <Button style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(editReservation(res._id,{titleCard,dateRes,num,total}));handleClose()}}>
+           <Button style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(editReservation(res._id,{titleCard,dateRes,num,total}));handleClose();notify()}}>
              
-          Edit
+          Modifier
            </Button>
+           <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover></ToastContainer>
            </Link>
 
 
