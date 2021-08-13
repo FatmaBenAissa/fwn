@@ -64,7 +64,15 @@ const Multi=(a,b)=>{
               <h6>{card.details[0]}</h6>
               <h6>{card.details[1]}</h6>
               <h6>Date:<input type="date" name="date"  onChange={(e)=>setDateRes(e.target.value)}></input></h6>
-              <h6>Qte</h6>
+              
+{card.titleCard==="salles des fêtes"?<h6>Nombre de jours</h6>:null}
+         {card.titleCard==="photographes"?<h6>Nombre d'heures</h6>:null}
+         {card.titleCard==="Habillement"?<h6>Nombre de jours</h6>:null}
+         {card.titleCard==="Beauté"?<h6>Nombre de jours</h6>:null}
+         {card.titleCard==="gastronomie"?<h6>Quantité en Kg</h6>:null}
+         {card.titleCard==="Troupes Musicales"?<h6>Nombre de jours</h6>:null}
+         {card.titleCard==="Cartes d'invitation"?<h6>Nombre de catres</h6>:null}
+         {card.titleCard==="Organisateur Et Décorateur"?<h6>Nombre de jours</h6>:null}
                 <input type="text" name="number" style={{width:90}}   onChange={(e)=>{setNum(e.target.value);setTotal(Multi(e.target.value,card.prix) )}} />
                  
                   {console.log(typeof(num),typeof(dateRes))}

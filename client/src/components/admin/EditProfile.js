@@ -7,7 +7,8 @@ import {Link} from 'react-router-dom'
 import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios"
-import {editUser} from "../../js/actions/user"
+import {editUser,current} from "../../js/actions/user"
+
 
 
 function EditProfile() {
@@ -130,7 +131,7 @@ return (
          <Modal.Footer>
            
            <Link to="/userProfile">
-           <Button  style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(editUser(user._id,{name,lastName,email,password,imageUrl:imageUrl.url,isAdmin,phone}));handleClose() }} >
+           <Button  style={{width:120,fontWeight:"bold", height:36,backgroundColor:"rgb(222 113 113)", padding:".375rem .75re",fontSize:"1rem",lineHeight:"1.5",borderRadius:".25rem", border:"none"}} onClick={()=> {dispatch(editUser(user._id,{name,lastName,email,password,imageUrl:imageUrl.url,isAdmin,phone}));dispatch(current());handleClose() }} >
              
           Modifier
            </Button>
